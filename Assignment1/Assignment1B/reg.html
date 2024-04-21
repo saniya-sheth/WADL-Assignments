@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .form-label{
+            font-size: 1rem !important;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <form  id="form">
+                        <h2>Registeration Form : </h2>
+                        <div class="mb-3">
+                            <label for="id" class="form-label">ID<sup>*</sup> :</label>
+                            <input type="text" name="id" class="form-control" id="id" >
+                            
+                        </div>
+                        
+                    
+                    <div class="form-field" >
+                        <label for="name1" class="form-label">Name<sup>*</sup> : </label>
+                            <input type="text" name="name1" id="name1" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="user" class="form-label">Username<sup>*</sup> :</label> 
+                            <input type="text" name="user" id="username" class="form-control" required>
+                        
+                        
+                    </div>
+                    
+                    <div class="form-field" >
+                    <label for="password" class="form-label">Password<sup>*</sup> : </label>
+                        <input type="password" name="password" id="password" class="form-control"  required>
+                    
+                    
+                    </div>
+                    
+                    <div class="form-field" >
+                    <label for="email" class="form-label">Email<sup>*</sup> : </label>
+                        <input type="email" name="email" id="email" class="form-control"  required>
+                    
+                    
+                    </div>
+                    
+                    <div class="form-field" class="mb-3">
+                    <label for="date" class="form-label">DOB : </label>
+                        <input type="date" name="date" id="date"  class="form-control" >
+                    
+                    
+                    </div>
+                    
+                    <div class="form-field form-radio" class="mt-3">
+                    <label for="gender" class="form-label">Gender : </label>
+                        <input type="radio" name="gender" id="gender">Male
+                        <input type="radio" name="gender">Female
+                    
+                    
+                    </div>
+                    
+                    <div class="form-field mb-3">
+                    <label for="address" class="form-label">Address : </label>
+                        <textarea name="address" id="address" cols="30" rows="10"  class="form-control" ></textarea>
+                    
+                    
+                    </div>
+                    
+                    <div class="form-field" >
+                    <label for="city" class="form-label">City : </label>
+                        <select name="city" id="city" class="form-select">
+                            <option value="choose" selected>Choose city</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Banglore">Banglore</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                        </select>
+                    
+                    
+                    </div>
+                    
+                    <div class="form-field mb-3">
+                    <label for="pin" class="form-label">Pincode<sup>*</sup> : </label>
+                        <input type="text" name="pin" id="pin" class="form-control"  required>
+                    
+                    
+                    </div>
+                    
+                    <div class="form-field mb-3">
+                    <label for="state" class="form-label">State : </label>
+                        <select name="state" id="state" class="form-select">
+                            <option value="choose" selected>Choose state</option>
+                            <option value="maha">Maharashtra</option>
+                            <option value="guj">Gujrat</option>
+                            <option value="karna">Karnataka</option>
+                            <option value="delhi">New Delhi</option>
+                        </select>
+                    
+                    
+                    </div>
+                    
+                    <div class="form-field mb-3">
+                    <label for="hobbies" class="form-label form-check">Hobbies : </label>
+                        <input type="checkbox" class="form-check-label">Drawing
+                        <input type="checkbox" class="form-check-label">Singing
+                        <input type="checkbox" class="form-check-label">Dancing
+                    
+                    
+                    </div>
+                    
+                    <button type="submit" class="btn-lg btn-dark mb-3">Submit</button>
+                    <button type="reset" class="btn-lg btn-dark mb-3" >Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="reg.js"></script>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    let id = document.getElementById("id");
+    let name1 = document.getElementById("name1");
+    let user = document.getElementById("user");
+    let form = document.getElementById("form");
+    let gender = $("input[name='gender']:checked");
+    let address = document.getElementById("address");
+    let flag = 0;
+    let check = false;
+    name1.addEventListener('change',()=>{
+        let regex = /^[a-zA-Z]+$/;
+        if(!regex.test(name1.value)){
+            flag = false;
+            alert("Only alphabets allowed!");
+        }else{
+            flag++;
+        }
+    });
+
+    let password = document.getElementById("password");
+    password.addEventListener("change",()=>{
+        if(password.value.length < 8){
+            
+            alert("Password should contain atleast 8 characters!");
+        }else{
+            flag++;
+        }
+    });
+
+    let pin = document.getElementById("pin");
+    pin.addEventListener("change",()=>{
+        if(pin.value.length != 6){
+            console.log(pin.value.length);
+            flag = false;
+            alert("Password should contain 6 digits!");
+        }else{
+            flag++;;
+        }
+    });
+
+    let dob = document.getElementById("date");
+    dob.addEventListener("change",()=>{
+        if(new Date(dob.value).getFullYear() <= 2004){
+            flag = false;
+            alert("Year should be greater than 2004");
+        }else{
+            flag++;
+        }
+    });
+   
+</script>
+</html>
